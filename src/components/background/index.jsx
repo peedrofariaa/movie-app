@@ -1,9 +1,8 @@
 import { BackgroundImage, BackgroundLinear } from './style'
-import backgroundImage from '../../assets/capa-open.jpg'
 
-export const Background = ({ children }) => {
+export const Background = ({ children, imageBanner }) => {
     return (
-        <BackgroundImage bgImage={backgroundImage}>
+        <BackgroundImage bgImage={imageBanner}>
             <BackgroundLinear>
                 {children}
             </BackgroundLinear>

@@ -2,7 +2,7 @@ import { Player, Youtube } from "@vime/react";
 import * as C from './style';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
-export const Video = ({ playVideo, handleClosePlayVideo }) => {
+export const Video = ({ linkVideo, playVideo, handleClosePlayVideo }) => {
     return playVideo ? (
 
         <C.Container>
@@ -12,7 +12,7 @@ export const Video = ({ playVideo, handleClosePlayVideo }) => {
             </C.Button>
 
             <Player controls>
-                <Youtube videoId="uYPbbksJxIg" />
+                <Youtube videoId={linkVideo} />
             </Player>
         </C.Container>
     ) : null;
