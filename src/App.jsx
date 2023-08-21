@@ -19,16 +19,21 @@ function App() {
   const [video, setVideo] = useState(DEFAULT_MOVIE)
   const [playVideo, setPlayVideo] = useState(false);
 
-  const [title, description, imageBanner, linkVideo] = video
+  const {title, description, imageBanner, linkVideo} = video
 
   const handleOpenPlayVideo = () => setPlayVideo(true);
   const handleClosePlayVideo = () => setPlayVideo(false);
+
+  const handleVideo = (data) =>{
+    setVideo(data)
+    window.scrollTo({top:0})
+  }
 
   return (
     <Background imageBanner={imageBanner}>
       <Header />
       <DescriptionMovie title={title} description={description} handleOpenPlayVideo={handleOpenPlayVideo} />
-      <Movies data={apiData} />
+      <Movies data={apiData} handleVideo={(data)=> handleVideo(data)} />
       <Video playVideo={playVideo} linkVideo={linkVideo} handleClosePlayVideo={handleClosePlayVideo} />
     </Background>
   );

@@ -4,6 +4,10 @@ export const Container = styled.div`
     padding: 40px 60px;
     width: 100%;
 
+    @media (max-width: 560px) {
+    padding: 20px;
+  }
+
     .react-multi-carousel-list{
         border-radius: 24px;
         border: 1px solid rgba(255, 255, 255, 0.14);

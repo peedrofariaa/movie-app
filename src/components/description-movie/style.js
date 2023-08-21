@@ -6,12 +6,18 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
 
+    @media (max-width: 560px) {
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const Title = styled.h1`
     color: #FFF;
     font-weight: 700;
-    font-size: 75px;
+    font-size: 65px;
     margin-bottom: 10px;
 `;
 

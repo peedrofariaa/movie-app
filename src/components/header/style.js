@@ -7,10 +7,14 @@ export const Container = styled.header`
     justify-content: space-between;
     padding: 20px 80px;
 
+    @media (max-width: 560px) {
+    padding: 20px;
+   }
+
     nav{
         display: flex;
         align-items: center;
-        gap: 40px;
+        gap: 30px;
     }
 
     a{
@@ -21,6 +25,10 @@ export const Container = styled.header`
         letter-spacing: 0.03em;
         transition: 0.3s;
         position: relative;
+
+        @media (max-width: 560px) {
+      font-size: 16px;
+     }
     }
 
     a:hover{
@@ -44,5 +52,8 @@ export const Container = styled.header`
 
     img{
         width: 150px;
+        @media (max-width: 560px) {
+      width: 80px;
+    }
     }
 `;

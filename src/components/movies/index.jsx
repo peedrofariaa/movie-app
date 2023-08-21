@@ -3,7 +3,7 @@ import 'react-multi-carousel/lib/styles.css';
 import * as C from './style'
 import Image from '../../assets/poster-open.webp'
 
-export const Movies = () => {
+export const Movies = ({ data, handleVideo }) => {
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -19,39 +19,28 @@ export const Movies = () => {
         }
     };
 
+    const getMovies = (category) => {
+        return data?.movies?.filter((movie) => movie.category === category)
+    }
     return (
         <C.Container>
-            <C.Text>Movies</C.Text>
+            {data?.categories?.map((category) => (
+                <>
+                    <C.Text key={category?.name} id={category?.name}>{category?.name}</C.Text>
+                    <Carousel responsive={responsive}>
+                        {getMovies(category?.type).map((data, index) => (
+                            <C.Movie src={data.imagePoster} alt='image movie'
+                                onClick={() => handleVideo(data)} />
+                        ))}
+                    </Carousel>
+                </>
+            ))
+            }
+            <C.Text id="All">All</C.Text>
             <Carousel responsive={responsive}>
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-            </Carousel>
-
-            <C.Text>TV Shows</C.Text>
-            <Carousel responsive={responsive}>
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-            </Carousel>
-
-            <C.Text>All</C.Text>
-            <Carousel responsive={responsive}>
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
-                <C.Movie src={Image} alt='image movie' />
+                {data?.movies.map((data, index) => (
+                    <C.Movie src={data.imagePoster} alt='image movie' onClick={() => handleVideo(data)} />
+                ))}
             </Carousel>
         </C.Container>
     )
